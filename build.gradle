@@ -1,0 +1,21 @@
+apply plugin:'java'
+apply plugin:'jetty'
+apply plugin: 'idea'
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    selenium
+}
+dependencies{
+    compile ('org.seleniumhq.selenium:selenium-chrome-driver:2.42.2',
+            'junit:junit:4.11')
+}
+task jettyDaemon(type: org.gradle.api.plugins.jetty.JettyRun) {
+    daemon = true
+}
+
+//task selenium(type: Test, dependsOn: jettyDaemon) {
+//    testClassesDir = sourceSets.selenium.output.classesDir
+//    classpath = sourceSets.selenium.runtimeClasspath
+//}
